@@ -1,19 +1,27 @@
+#include "main.h"
+
 /**
- * _strcpy - duplicates a string
- * @dest: copy of original string
- * @src: original string
+ * _atoi - Converts a string to an integer.
+ * @s: The string to be converted.
  *
- * Return: pointer to dest
+ * Return: The integer value of the converted string.
  */
-
-char *_strcpy(char *dest, char *src)
+int _atoi(char *s)
 {
-	int a, len;
+	int sign = 1;
+	unsigned int num = 0;
 
-	len = 0;
-	while (*(src + len) != '\0')
-		len++;
-	for (a = 0; a <= len; a++)
-		dest[a] = *(src + a);
-	return (dest);
+	do {
+		if (*s == '-')
+			sign *= -1;
+
+		else if (*s >= '0' && *s <= '9')
+			num = (num * 10) + (*s - '0');
+
+		else if (num > 0)
+			break;
+
+	} while (*s++);
+
+	return (num * sign);
 }
